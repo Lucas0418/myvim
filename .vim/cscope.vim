@@ -27,10 +27,6 @@
 " This tests to see if vim was configured with the '--enable-cscope' option
 " when it was compiled.  If it wasn't, time to recompile vim... 
 if has("cscope")
-cs add /usr/include/cscope.out /usr/include
-cs add /home/jslu/socket/UNP/cscope.out /home/jslu/socket/UNP
-cs add /home/jslu/IntroToAlgorithm/cscope.out /home/jslu/IntroToAlgorithm
-cs add /home/jslu/verserver/cscope.out /home/jslu/verserver
 """"""""""""" Standard cscope/vim boilerplate
 
 " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
