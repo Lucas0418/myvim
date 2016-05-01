@@ -1,46 +1,3 @@
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-try
-source ~/.vim/cscope.vim
-catch
-endtry
-
-" Let Vundle manage itself.
-Plugin 'VundleVim/Vundle.vim'
-
-" Plugins
-Plugin 'valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
-" Plugin 'SirVer/ultisnips'
-Plugin 'edsono/vim-matchit'
-Plugin 'elzr/vim-json'
-Plugin 'honza/vim-snippets'
-Plugin 'justinmk/vim-sneak'
-Plugin 'kien/ctrlp.vim'
-Plugin 'ludovicchabant/vim-lawrencium'
-Plugin 'majutsushi/tagbar'
-Plugin 'mhinz/vim-signify'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'sjl/gundo.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-surround'
-Plugin 'tyru/open-browser.vim'
-Plugin 'vim-scripts/a.vim'
-
-" Color schemes
-Plugin 'tomasr/molokai'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'tComment'
-Plugin 'SuperTab'
-
-" Required, plugins available after.
-call vundle#end()
-filetype plugin indent on
 " ============================================================================
 " Vundle initialization
 " Avoid modify this section, unless you are very sure of what you are doing
@@ -74,7 +31,7 @@ Bundle 'gmarik/vundle'
 " Plugins from github repos:
 
 " Python and PHP Debugger
-" Bundle 'fisadev/vim-debug.vim'
+Bundle 'fisadev/vim-debug.vim'
 " Better file browser
 Bundle 'scrooloose/nerdtree'
 " Code commenter
@@ -146,8 +103,16 @@ Bundle 'Wombat'
 " Yank history navigation
 Bundle 'YankRing.vim'
 
-Plugin 'tComment'
-Plugin 'SuperTab'
+" Utility 
+Bundle "SuperTab" 
+
+" FuzzyFinder 
+Bundle "L9" 
+Bundle "FuzzyFinder" 
+
+" tComment 
+Bundle "tComment" 
+
 " ============================================================================
 " Install plugins the first time vim runs
 
@@ -261,7 +226,7 @@ set undofile                      " persistent undos - undo after you re-open th
 set undodir=~/.vim/dirs/undos
 set viminfo+=n~/.vim/dirs/viminfo
 " store yankring history file there too
-" let g:yankring_history_dir = '~/.vim/dirs'
+let g:yankring_history_dir = '~/.vim/dirs/'
 
 " create needed directories if they don't exist
 if !isdirectory(&backupdir)
@@ -464,7 +429,24 @@ let g:airline#extensions#whitespace#enabled = 0
 "let g:airline_symbols.readonly = '⭤'
 "let g:airline_symbols.linenr = '⭡'
 
-nnoremap    <C-W>a  :vertical resize +20<CR>
-nnoremap // :TComment<CR>
-vnoremap // :TComment<CR>
-set ignorecase
+set pastetoggle=<F10>
+
+let g:fuf_modesDisable = [] " {{{ 
+nnoremap <silent> <LocalLeader>h :FufHelp<CR> 
+nnoremap <silent> <LocalLeader>2  :FufFileWithCurrentBufferDir<CR> 
+nnoremap <silent> <LocalLeader>@  :FufFile<CR> 
+nnoremap <silent> <LocalLeader>3  :FufBuffer<CR> 
+nnoremap <silent> <LocalLeader>4  :FufDirWithCurrentBufferDir<CR> 
+nnoremap <silent> <LocalLeader>$  :FufDir<CR> 
+nnoremap <silent> <LocalLeader>5  :FufChangeList<CR> 
+nnoremap <silent> <LocalLeader>6  :FufMruFile<CR> 
+nnoremap <silent> <LocalLeader>7  :FufLine<CR> 
+nnoremap <silent> <LocalLeader>8  :FufBookmark<CR>  
+nnoremap <silent> <LocalLeader>*  :FuzzyFinderAddBookmark<CR><CR> 
+nnoremap <silent> <LocalLeader>9  :FufTaggedFile<CR>  
+" " }}} 
+
+" tComment 
+nnoremap // :TComment<CR> 
+vnoremap // :TComment<CR> 
+
